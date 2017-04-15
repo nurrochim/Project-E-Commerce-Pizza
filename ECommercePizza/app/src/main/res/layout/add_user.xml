@@ -44,4 +44,10 @@
             android:layout_height="wrap_content"
             android:hint="Email" />
     </android.support.design.widget.TextInputLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_user"
+        android:text="SAVE"
+        />
 </LinearLayout>

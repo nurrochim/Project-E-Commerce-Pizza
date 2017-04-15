@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.ecommerce.ecommercepizza.MainActivity;
 import com.ecommerce.ecommercepizza.R;
+import com.ecommerce.ecommercepizza.model.MenuPizza;
 import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
 
@@ -40,6 +41,7 @@ public class BaseFragment extends Fragment {
     public SharedPreferences sharedPreference ;
     public CharSequence textToast = "";
  //   public Dao<User, String> userDao = null;
+    public Dao<MenuPizza, String> menuPizzaDao = null;
     public static String keyIpAddress = "IpAddress";
     public static String keyAddres = "Address";
     public String ipServer = null;
@@ -63,11 +65,12 @@ public class BaseFragment extends Fragment {
         ipServer = sharedPreference.getString("IpAddress","");
         idUser = sharedPreference.getString("IdUser","");
         // load Service DB
-//        try {
-//            //userDao = dbh.getUserDao();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            //userDao = dbh.getUserDao();
+            menuPizzaDao = dbh.getMenuPizzaDao();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         initView();
 
@@ -103,11 +106,12 @@ public class BaseFragment extends Fragment {
 
     public void openDatabaseHelper(){
         dbh = new DatabaseHelper(getActivity());
-//        try {
-//            //userDao = dbh.getUserDao();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            //userDao = dbh.getUserDao();
+            menuPizzaDao = dbh.getMenuPizzaDao();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

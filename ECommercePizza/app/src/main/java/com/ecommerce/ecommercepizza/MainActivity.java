@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ecommerce.ecommercepizza.fragment.AddUser;
+import com.ecommerce.ecommercepizza.fragment.FragmentMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +108,8 @@ public class MainActivity extends AppCompatActivity
 //            startActivityForResult(intent, 0);
         } else if(id == R.id.nav_add_user){
             fragmentManager.beginTransaction().replace(R.id.content_main,new AddUser()).commit();
+        } else if(id == R.id.nav_menu_utama){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMenu()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
