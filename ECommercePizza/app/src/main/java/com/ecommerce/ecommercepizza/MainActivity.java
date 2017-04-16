@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.content_main,new AddUser()).commit();
         } else if(id == R.id.nav_menu_utama){
             fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMenu()).commit();
+            textTitle.setText("Menu");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

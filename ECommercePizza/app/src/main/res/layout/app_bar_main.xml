@@ -32,7 +32,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:paddingTop="1mm"
-        android:background="@color/material_green_400"
+        android:background="@color/material_red_A400"
         >
         <ImageView
             android:id="@+id/image_menu"

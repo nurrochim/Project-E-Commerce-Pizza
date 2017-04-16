@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.ecommerce.ecommercepizza.MainActivity;
 import com.ecommerce.ecommercepizza.R;
 import com.ecommerce.ecommercepizza.adapter.RecycleViewListAdapterMenu;
 import com.ecommerce.ecommercepizza.common.BaseFragment;
@@ -28,6 +29,7 @@ public class FragmentMenu extends BaseFragment{
     public void initView() {
         view = inflater.inflate(R.layout.menu_pizza, container, false);
         listview = (RecyclerView) view.findViewById(R.id.view_menu);
+        MainActivity.textTitle.setText("Menu");
         if(data.isEmpty()) {
             //loadInit();
             data.add("Beef Rendang");
@@ -35,9 +37,9 @@ public class FragmentMenu extends BaseFragment{
             data.add("Extravaganza");
             data.add("Spicy Garlic Prawn");
             data.add("Tandori Chicken");
+            data.add("Fire Breather");
             data.add("Veggie Mania");
             data.add("Veggie Supreme");
-            data.add("Fire Breather");
             data.add("Sambal Beef");
             data.add("Beef Papperoni Feast");
 

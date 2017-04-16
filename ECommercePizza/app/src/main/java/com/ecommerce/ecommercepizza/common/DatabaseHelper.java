@@ -79,7 +79,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         String message = "";
         try {
             // add sample data
-            for (int i = 1; i < 10; i++) {
+            for (int i = 1; i < 11; i++) {
                 MenuPizza item = new MenuPizza();
                 item.setIdMenu(String.valueOf(i));
                 switch (i) {
@@ -88,51 +88,61 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
                         item.setDetail("Rendang Sauce, Shredded Mozzarella Cheese, Onion, Green Pepper");
                         item.setHarga("Rp.105.000");
                         item.setSize("10 Inch");
+                        break;
                     case 2:
-                        item.setMenuName("tAYAM BAKAR");
+                        item.setMenuName("AYAM BAKAR");
                         item.setDetail("Rendang Sauce, Shredded Mozzarella Cheese, Onion, AyamBakar, Dry Parsley Flake");
                         item.setHarga("Rp.105.000");
                         item.setSize("10 Inch");
+                        break;
                     case 3:
                         item.setMenuName("EXTRAVAGANZZA");
                         item.setDetail("Domino's Pizza Sauce, Green Peppers, Beef Crumble, Beef Pepperoni, Onions, Mushrooms, Black Olives, Mozzarella Cheese");
                         item.setHarga("Rp.85.000");
                         item.setSize("10 Inch");
+                        break;
                     case 4:
-                        item.setMenuName("FIRE BREATHER");
-                        item.setDetail("Domino's Pizza Sauce, Sambal Sauce, Jalapeno, Tomato, Beef Pepperoni, Dry Chili Flakes, Mozzarella Cheese");
-                        item.setHarga("Rp.72.000");
-                        item.setSize("10 Inch");
-                    case 5:
                         item.setMenuName("SPICY GARLIC PRAWN");
                         item.setDetail("Rustic Sauce, Shredded Mozzarella Cheese, Prawn, Garlic Bread Seasoning, Onion, Local Tomato, Dry Parsley Flakes");
                         item.setHarga("Rp.105.000");
                         item.setSize("10 Inch");
-                    case 6:
+                        break;
+                    case 5:
                         item.setMenuName("TANDOORI CHICKEN");
                         item.setDetail("Curry Sauce, Onion, Green Pepper, Tandoori Chicken, Rahitta Sauce");
                         item.setHarga("Rp.105.000");
                         item.setSize("10 Inch");
-                    case 7:
-                        item.setMenuName("VEGGIE SUPREME");
-                        item.setDetail("Domino's Pizza Sauce, Green Pepper, Red Pepper, Onion, Feta Cheese, Parsley, Mozzarella Cheese");
+                        break;
+                    case 6:
+                        item.setMenuName("FIRE BREATHER");
+                        item.setDetail("Domino's Pizza Sauce, Sambal Sauce, Jalapeno, Tomato, Beef Pepperoni, Dry Chili Flakes, Mozzarella Cheese");
                         item.setHarga("Rp.72.000");
                         item.setSize("10 Inch");
-                    case 8:
+                        break;
+                    case 7:
                         item.setMenuName("VEGGIE MANIA");
                         item.setDetail("Domino's Pizza Sauce, Onions, Green Peppers, Corns, Mushrooms, Black Olives, Tomato Dice, Dried Parsley, Mozarella Cheese");
                         item.setHarga("Rp.85.000");
                         item.setSize("10 Inch");
+                        break;
+                    case 8:
+                        item.setMenuName("VEGGIE SUPREME");
+                        item.setDetail("Domino's Pizza Sauce, Green Pepper, Red Pepper, Onion, Feta Cheese, Parsley, Mozzarella Cheese");
+                        item.setHarga("Rp.72.000");
+                        item.setSize("10 Inch");
+                        break;
                     case 9:
                         item.setMenuName("SAMBAL BEEF");
                         item.setDetail("Pizza Dough, Dom Pizza Sauce, Mozarella Cheese, Beef Topping / Cramble, Sambal Sauce");
                         item.setHarga("Rp.45.000");
                         item.setSize("10 Inch");
+                        break;
                     case 10:
                         item.setMenuName("BEEF PEPPERONI FEAST");
                         item.setDetail("Domino's Pizza Sauce, Beef Pepperoni, Mozarella Cheese");
                         item.setHarga("Rp.72.000");
                         item.setSize("10 Inch");
+                        break;
                 }
             menuPizzaDao.create(item);
         }
