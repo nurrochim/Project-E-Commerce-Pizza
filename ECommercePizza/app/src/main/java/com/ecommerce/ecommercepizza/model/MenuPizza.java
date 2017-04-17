@@ -3,11 +3,13 @@ package com.ecommerce.ecommercepizza.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by Asus on 14/04/2017.
  */
 @DatabaseTable(tableName = MenuPizza.tbl_menu_pizza)
-public class MenuPizza {
+public class MenuPizza implements Serializable {
     public static final String tbl_menu_pizza = "TBL_MENU_PIZZA";
     public static final String clm_id_menu = "ID_MENU";
     public static final String clm_menu_name = "NAME";

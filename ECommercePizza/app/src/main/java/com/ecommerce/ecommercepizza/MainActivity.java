@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.ecommerce.ecommercepizza.fragment.AddUser;
 import com.ecommerce.ecommercepizza.fragment.FragmentMenu;
+import com.ecommerce.ecommercepizza.fragment.FragmentMyCart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +112,9 @@ public class MainActivity extends AppCompatActivity
         } else if(id == R.id.nav_menu_utama){
             fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMenu()).commit();
             textTitle.setText("Menu");
+        } else if(id == R.id.nav_my_cart){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMyCart()).commit();
+            textTitle.setText("My Cart");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -4,12 +4,14 @@ package com.ecommerce.ecommercepizza.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by Asus on 28/11/2016.
  */
 
 @DatabaseTable(tableName = User.tbl_user)
-public class User {
+public class User implements Serializable {
     public static final String tbl_user = "TBL_USER";
     public static final String clm_id_user = "ID_USER";
     public static final String clm_user_name = "USER_NAME";
