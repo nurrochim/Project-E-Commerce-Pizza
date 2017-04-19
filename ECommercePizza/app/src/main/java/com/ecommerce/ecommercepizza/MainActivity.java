@@ -20,8 +20,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ecommerce.ecommercepizza.fragment.AddUser;
+import com.ecommerce.ecommercepizza.fragment.FragmentLogin;
 import com.ecommerce.ecommercepizza.fragment.FragmentMenu;
 import com.ecommerce.ecommercepizza.fragment.FragmentMyCart;
+import com.ecommerce.ecommercepizza.fragment.FragmentPembayaran;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         listFragments = new ArrayList<Fragment>();
-        listFragments.add(new AddUser());
+        listFragments.add(new FragmentMenu());
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_main, listFragments.get(0)).commit();
@@ -105,16 +107,22 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_login) {
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentLogin()).commit();
+            textTitle.setText("Pizza E-Commerce");
 //            Intent intent = new Intent(getApplicationContext(), AddUser.class);
 //            startActivityForResult(intent, 0);
         } else if(id == R.id.nav_add_user){
             fragmentManager.beginTransaction().replace(R.id.content_main,new AddUser()).commit();
+            textTitle.setText("Add User");
         } else if(id == R.id.nav_menu_utama){
             fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMenu()).commit();
             textTitle.setText("Menu");
         } else if(id == R.id.nav_my_cart){
             fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMyCart()).commit();
             textTitle.setText("My Cart");
+        } else if(id == R.id.nav_confirmation){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentPembayaran()).commit();
+            textTitle.setText("Pembayaran");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

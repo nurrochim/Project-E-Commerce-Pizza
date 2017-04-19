@@ -42,9 +42,7 @@ public class FragmentMyCart extends BaseFragment{
         checkOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(textUserName.getText().toString().equals("add")){
-
-                }
+                openFragment(new FragmentOrderSummary(),"Confirmation",false);
             }
         });
 
