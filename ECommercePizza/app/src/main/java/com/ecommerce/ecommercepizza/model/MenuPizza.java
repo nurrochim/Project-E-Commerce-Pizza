@@ -16,16 +16,18 @@ public class MenuPizza implements Serializable {
     public static final String clm_detail = "DETAIL";
     public static final String clm_harga = "HARGA";
     public static final String clm_size = "SIZE";
+    public static final String clm_image = "IMAGE_PATH";
 
     public MenuPizza(){
     }
 
-    public MenuPizza(String idMenu, String menuName, String detail, String harga, String size) {
+    public MenuPizza(String idMenu, String menuName, String detail, String harga, String size, String imagePath) {
         this.idMenu = idMenu;
         this.menuName = menuName;
         this.detail = detail;
         this.harga = harga;
         this.size = size;
+        this.imagePath = imagePath;
     }
 
     @DatabaseField(id = true, columnName = clm_id_menu)
@@ -38,6 +40,8 @@ public class MenuPizza implements Serializable {
     String harga;
     @DatabaseField(columnName = clm_size)
     String size;
+    @DatabaseField(columnName = clm_image)
+    String imagePath;
 
     public String getIdMenu() {
         return idMenu;
@@ -77,5 +81,13 @@ public class MenuPizza implements Serializable {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

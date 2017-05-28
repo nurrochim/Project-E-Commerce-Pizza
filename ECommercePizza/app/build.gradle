@@ -6,11 +6,13 @@ android {
     defaultConfig {
         applicationId "com.ecommerce.ecommercepizza"
         minSdkVersion 19
-        targetSdkVersion 19
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "URI", "\"http://evening-scrubland-10355.herokuapp.com\"")
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -18,6 +20,8 @@ android {
         }
     }
 }
+
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

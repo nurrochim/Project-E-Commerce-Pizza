@@ -2,15 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_layout_menu"
     android:paddingBottom="5px"
+    android:background="@drawable/shape_radius_layout_menu"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5px"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:padding="3dp">
         <ImageView
             android:id="@+id/image_menu_item"
             android:layout_width="match_parent"
@@ -31,9 +31,11 @@
         android:textStyle="bold"
         android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:background="@color/material_grey_50"
+        android:background="@color/material_grey_200"
         android:alpha="0.8"
-        android:layout_marginLeft="5px"
-        android:layout_marginRight="5px"/>
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"/>
 
 </RelativeLayout>

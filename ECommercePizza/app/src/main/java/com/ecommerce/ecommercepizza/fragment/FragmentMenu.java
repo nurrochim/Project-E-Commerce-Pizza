@@ -16,14 +16,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created by Asus on 10/04/2017.
  */
 
 public class FragmentMenu extends BaseFragment{
-    RecyclerView listview;
     RecycleViewListAdapterMenu adapterView;
     List<String> data = new ArrayList<>();
+    RecyclerView listview;
 
     @Override
     public void initView() {
@@ -64,7 +65,7 @@ public class FragmentMenu extends BaseFragment{
 
         //set up equal space between grid columns
         int spanCount = 2; // 3 columns
-        int spacing = 20; // 20px
+        int spacing = 5; // 20px
         boolean includeEdge = true;
         listview.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
         listview.setAdapter(new RecycleViewListAdapterMenu(getActivity(),data, fragmentManager));
