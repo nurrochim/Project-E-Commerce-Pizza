@@ -15,7 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ecommerce.ecommerpizzas.R;
+import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentAddUser;
+import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentLogin;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentMenuImp;
+import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentMyCart;
+import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentPembayaran;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -89,9 +93,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if(id == R.id.nav_menu_utama){
+        if (id == R.id.nav_login) {
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentLogin()).commit();
+            textTitle.setText("Pizza E-Commerce");
+        } else if(id == R.id.nav_add_user){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentAddUser()).commit();
+            textTitle.setText("Add User");
+        } else if(id == R.id.nav_menu_utama){
             fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMenuImp()).commit();
-            //textTitle.setText("Menu");
+            textTitle.setText("Pizza E-Commerce");
+        } else if(id == R.id.nav_my_cart){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMyCart()).commit();
+            textTitle.setText("My Cart");
+        } else if(id == R.id.nav_confirmation){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentPembayaran()).commit();
+            textTitle.setText("Pembayaran");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

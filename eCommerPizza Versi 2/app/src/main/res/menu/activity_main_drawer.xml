@@ -2,9 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-    <item
-        android:id="@+id/nav_menu_utama"
-        android:icon="@drawable/menu_utama"
-        android:title="Menu Utama" />
+        <item
+            android:id="@+id/nav_login"
+            android:title="Login"
+            android:icon="@drawable/login"/>
+        <item
+            android:id="@+id/nav_add_user"
+            android:icon="@drawable/account"
+            android:title="Add User" />
+        <item
+            android:id="@+id/nav_menu_utama"
+            android:icon="@drawable/menu_utama"
+            android:title="Menu Utama" />
+        <item
+            android:id="@+id/nav_my_cart"
+            android:icon="@drawable/carts1"
+            android:title="My Cart" />
+        <item
+            android:id="@+id/nav_confirmation"
+            android:icon="@drawable/active_task"
+            android:title="Confirmation" />
     </group>
 </menu>
