@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_main, new FragmentMenuImp()).commit();
+        fragmentManager.beginTransaction().replace(R.id.content_main, new FragmentLogin()).commit();
     }
 
     @Override
@@ -118,4 +118,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static void showHeader(String header){
 
     }
+
 }

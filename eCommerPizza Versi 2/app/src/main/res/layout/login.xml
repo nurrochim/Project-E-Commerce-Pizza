@@ -27,7 +27,9 @@
             android:text="Order As Guest"
             android:background="@drawable/shape_radius_layout_blue"
             android:textColor="@color/md_white_1000"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:id="@+id/btn_order_as_guest"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +44,8 @@
             android:text="Register Now"
             android:background="@drawable/shape_radius_layout_red"
             android:textColor="@color/md_white_1000"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:id="@+id/btn_register"/>
         <Space
             android:layout_width="wrap_content"
             android:layout_height="50px" />
