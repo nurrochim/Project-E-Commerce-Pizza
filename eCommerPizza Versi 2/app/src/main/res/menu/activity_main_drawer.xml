@@ -13,11 +13,15 @@
         <item
             android:id="@+id/nav_menu_utama"
             android:icon="@drawable/menu_utama"
-            android:title="Menu Utama" />
+            android:title="Main Menu" />
         <item
             android:id="@+id/nav_my_cart"
             android:icon="@drawable/carts1"
             android:title="My Cart" />
+        <item
+            android:id="@+id/nav_summary"
+            android:icon="@drawable/active_task"
+            android:title="Order Summary" />
         <item
             android:id="@+id/nav_confirmation"
             android:icon="@drawable/active_task"

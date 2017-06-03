@@ -19,6 +19,7 @@ import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentAddUser;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentLogin;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentMenuImp;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentMyCart;
+import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentOrderSummary;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentPembayaran;
 
 import butterknife.BindView;
@@ -108,7 +109,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if(id == R.id.nav_confirmation){
             fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentPembayaran()).commit();
             textTitle.setText("Pembayaran");
+        }else if(id == R.id.nav_summary){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentOrderSummary()).commit();
+            textTitle.setText("Order Summary");
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
