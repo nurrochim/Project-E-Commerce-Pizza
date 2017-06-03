@@ -29,4 +29,9 @@ public class FragmentLogin extends BaseFragment {
     public void openAddUser(){
         openFragment(new FragmentAddUser(), "", false);
     }
+
+    @OnClick({R.id.btn_login})
+    public void openMenu(){
+        openFragment(new FragmentMenuImp(), "", false);
+    }
 }
