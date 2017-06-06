@@ -13,13 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ecommerce.ecommerpizzas.R;
-import com.ecommerce.ecommerpizzas.deps.DaggerDeps;
-import com.ecommerce.ecommerpizzas.deps.Deps;
-import com.ecommerce.ecommerpizzas.utils.NetworkModule;
-import com.ecommerce.ecommerpizzas.view.main.MainActivity;
-
-
-import java.io.File;
 
 
 /**
@@ -31,7 +24,7 @@ public class BaseFragment extends Fragment {
     public LayoutInflater inflater;
     protected View view;
     protected ViewGroup container;
-    Deps deps;
+
     public FragmentTransaction fragmentTransaction;
 
     @Override
@@ -39,9 +32,6 @@ public class BaseFragment extends Fragment {
         this.inflater = inflater;
         this.container = container;
         fragmentManager = getActivity().getSupportFragmentManager();
-
-        File cacheFile = new File(getActivity().getBaseContext().getCacheDir(), "responses");
-        deps = DaggerDeps.builder().networkModule(new NetworkModule(cacheFile)).build();
 
         initView();
         return view;
@@ -64,10 +54,6 @@ public class BaseFragment extends Fragment {
         super.onDestroy();
     }
 
-    public Deps getDeps() {
-        return deps;
-    }
-
     public void openFragment(Fragment fragment, String Title, Boolean isAnimationBack){
         fragmentTransaction = fragmentManager.beginTransaction();
         if(isAnimationBack){
@@ -77,8 +63,5 @@ public class BaseFragment extends Fragment {
         }
         fragmentTransaction.replace(R.id.content_main, fragment);
         fragmentTransaction.addToBackStack(null).commit();
-//        if(Title!=null && !Title.isEmpty()){
-//            MainActivity.textTitle.setText(Title);
-//        }
     }
 }

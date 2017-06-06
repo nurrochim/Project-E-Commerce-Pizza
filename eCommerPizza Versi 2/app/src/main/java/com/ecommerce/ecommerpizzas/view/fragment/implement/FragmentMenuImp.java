@@ -12,15 +12,20 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ecommerce.ecommerpizzas.R;
 import com.ecommerce.ecommerpizzas.adapter.ListAdapter;
+import com.ecommerce.ecommerpizzas.deps.DaggerDeps;
+import com.ecommerce.ecommerpizzas.deps.Deps;
 import com.ecommerce.ecommerpizzas.holder.MenuListHolder;
 import com.ecommerce.ecommerpizzas.models.menu.MenuListData;
 import com.ecommerce.ecommerpizzas.models.menu.MenuRespon;
 import com.ecommerce.ecommerpizzas.presenter.menu.MenuPresenter;
 import com.ecommerce.ecommerpizzas.utils.GridSpacingItemDecoration;
+import com.ecommerce.ecommerpizzas.utils.NetworkModule;
 import com.ecommerce.ecommerpizzas.utils.Service;
 import com.ecommerce.ecommerpizzas.utils.URLs;
 import com.ecommerce.ecommerpizzas.view.fragment.BaseFragment;
 import com.ecommerce.ecommerpizzas.view.fragment.MenuFragment;
+
+import java.io.File;
 
 import javax.inject.Inject;
 
@@ -50,12 +55,18 @@ public class FragmentMenuImp extends BaseFragment implements MenuFragment {
 
     private ListAdapter adapter;
     private MenuPresenter menuPresenter;
+    Deps deps;
 
     @Override
     public void initView() {
         view = inflater.inflate(R.layout.menu_pizza, container, false);
         ButterKnife.bind(this, view);
-        getDeps().inject(this);
+
+        // cache
+        File cacheFile = new File(getActivity().getBaseContext().getCacheDir(), "responses");
+        deps = DaggerDeps.builder().networkModule(new NetworkModule(cacheFile)).build();
+        deps.inject(this);
+
         menuPresenter = new MenuPresenter(this, service);
         menuPresenter.getMenuList();
     }
