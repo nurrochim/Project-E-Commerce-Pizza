@@ -129,7 +129,7 @@ public class FragmentMenuImp extends BaseFragment implements MenuFragment {
     public void listViewDecor() {
         listview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         int spanCount = 2; // 3 columns
-        int spacing = 10; // 20px
+        int spacing = 3; // 20px
         boolean includeEdge = true;
         listview.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
         listview.setAdapter(adapter);
