@@ -1,5 +1,8 @@
 package com.ecommerce.ecommerpizzas.view.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ecommerce.ecommerpizzas.R;
+import com.ecommerce.ecommerpizzas.models.entity.MyCart;
+import com.ecommerce.ecommerpizzas.utils.DatabaseHelper;
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
 
 
 /**
@@ -24,6 +32,11 @@ public class BaseFragment extends Fragment {
     public LayoutInflater inflater;
     protected View view;
     protected ViewGroup container;
+    public SharedPreferences.Editor editorSharedPreference ;
+    public SharedPreferences sharedPreference ;
+    public DatabaseHelper dbh ;
+    public SQLiteDatabase db;
+    public Dao<MyCart, String> myCartsDao = null;
 
     public FragmentTransaction fragmentTransaction;
 
@@ -33,11 +46,25 @@ public class BaseFragment extends Fragment {
         this.container = container;
         fragmentManager = getActivity().getSupportFragmentManager();
 
+        //sharedpreference
+        editorSharedPreference = getContext().getSharedPreferences("ReUse_Variable", Context.MODE_PRIVATE).edit();
+        sharedPreference = getContext().getSharedPreferences("ReUse_Variable", Context.MODE_PRIVATE);
+
         initView();
         return view;
     }
 
     public void initView(){
+
+    }
+
+    public void openDatabaseHelper(){
+        dbh = new DatabaseHelper(getActivity());
+        try {
+            myCartsDao = dbh.getMyCartDao();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -62,6 +89,22 @@ public class BaseFragment extends Fragment {
             fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
         }
         fragmentTransaction.replace(R.id.content_main, fragment);
-        fragmentTransaction.addToBackStack(null).commit();
+        fragmentTransaction.hide(this);
+        fragmentTransaction.addToBackStack(this.getClass().getName()).commit();
+    }
+
+
+    public void saveSharedPreference(String key, Object value){
+        if(value instanceof String){
+            editorSharedPreference.putString(key, value.toString());
+        }
+
+        editorSharedPreference.commit();
+    }
+
+    public Object getValueSharedPreference(String key){
+        Object object = new Object();
+        object = sharedPreference.getString(key,"");
+        return object;
     }
 }

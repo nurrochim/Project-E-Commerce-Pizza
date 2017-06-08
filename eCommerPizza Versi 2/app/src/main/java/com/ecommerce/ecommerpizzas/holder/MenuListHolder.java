@@ -27,7 +27,6 @@ public class MenuListHolder extends RecyclerView.ViewHolder {
     View itemView;
     @BindView(R.id.image_menu_item)
     ImageView imageView;
-    protected Subscription mImageLoadSubscription;
 
     public MenuListHolder(View itemView) {
         super(itemView);

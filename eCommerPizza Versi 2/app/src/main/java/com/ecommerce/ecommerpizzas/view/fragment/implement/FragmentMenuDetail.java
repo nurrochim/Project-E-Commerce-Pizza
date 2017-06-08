@@ -16,17 +16,22 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.ecommerce.ecommerpizzas.R;
+import com.ecommerce.ecommerpizzas.models.entity.MyCart;
 import com.ecommerce.ecommerpizzas.models.menu.MenuListData;
 import com.ecommerce.ecommerpizzas.models.menu.MenuModelImp;
 import com.ecommerce.ecommerpizzas.utils.URLs;
 import com.ecommerce.ecommerpizzas.view.fragment.BaseFragment;
 
+import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Subscription;
 
 /**
@@ -93,5 +98,21 @@ public class FragmentMenuDetail extends BaseFragment{
 
     public void setModel(MenuListData model) {
         this.model = model;
+    }
+
+    @OnClick(R.id.add_to_cart)
+    public void addToCart(){
+        try {
+            openDatabaseHelper();
+            MyCart myCart = new MyCart(model.getId(), model.getMenuName(), model.getMenuDetail(), model.getMenuHarga(), model.getMenuSize(), "1", model.getImage1());
+            myCartsDao.create(myCart);
+
+            // open fragment MyCart
+            openFragment(new FragmentMyCart(), "", false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            dbh.close();
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.ecommerce.ecommerpizzas.utils;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import com.ecommerce.ecommerpizzas.models.entity.MenuPizza;
+import com.ecommerce.ecommerpizzas.models.entity.MyCart;
 import com.ecommerce.ecommerpizzas.models.entity.User;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -22,8 +23,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final int    DATABASE_VERSION = 4;
     private Dao<User, String> userDao = null;
     private Dao<MenuPizza, String> menuPizzaDao = null;
+    private Dao<MyCart, String> myCartDao = null;
     private RuntimeExceptionDao<User, ?> mUser;
     private RuntimeExceptionDao<MenuPizza, ?> mMenuPizza;
+    private RuntimeExceptionDao<MyCart, ?> mMyCart;
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,6 +37,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(connectionSource, User.class);
             TableUtils.createTable(connectionSource, MenuPizza.class);
+            TableUtils.createTable(connectionSource, MyCart.class);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -44,6 +48,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.dropTable(connectionSource, User.class, true);
             TableUtils.dropTable(connectionSource, MenuPizza.class, true);
+            TableUtils.dropTable(connectionSource, MyCart.class, true);
             onCreate(database, connectionSource);
 
         } catch (SQLException e) {
@@ -71,6 +76,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
         mMenuPizza = getRuntimeExceptionDao(MenuPizza.class);
         return menuPizzaDao;
+    }
+
+    public Dao<MyCart, String> getMyCartDao() throws SQLException {
+        if (myCartDao == null) {
+            myCartDao = getDao(MyCart.class);
+        }
+        mMyCart = getRuntimeExceptionDao(MyCart.class);
+        return myCartDao;
     }
 
     public String AddDataMenuPizza() {

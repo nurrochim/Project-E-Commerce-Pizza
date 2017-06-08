@@ -20,24 +20,26 @@ public class MyCart implements Serializable {
     public static final String clm_harga = "HARGA";
     public static final String clm_size = "SIZE";
     public static final String clm_qty = "QTY";
+    public static final String clm_image = "IMAGE";
 
     public MyCart() {
     }
 
-    public MyCart(String fidMenuPizza, String menuName, String detail, String harga, String size, String qty) {
+    public MyCart(int fidMenuPizza, String menuName, String detail, String harga, String size, String qty, String image) {
         this.fidMenuPizza = fidMenuPizza;
         this.menuName = menuName;
         this.detail = detail;
         this.harga = harga;
         this.size = size;
         this.qty = qty;
+        this.image = image;
     }
 
-    @DatabaseField(id = true, generatedId = true, columnName = clm_id)
-    int idPesanan;
+    @DatabaseField(generatedId = true, columnName = clm_id)
+    Integer idPesanan;
 
     @DatabaseField(columnName = clm_fidMenu)
-    String fidMenuPizza;
+    Integer fidMenuPizza;
     @DatabaseField(columnName = clm_menu_name)
     String menuName;
     @DatabaseField(columnName = clm_detail)
@@ -48,21 +50,19 @@ public class MyCart implements Serializable {
     String size;
     @DatabaseField(columnName = clm_qty)
     String qty;
+    @DatabaseField(columnName = clm_image)
+    String image;
 
-    public int getIdPesanan() {
+    public Integer getIdPesanan() {
         return idPesanan;
     }
 
-    public void setIdPesanan(int idPesanan) {
+    public void setIdPesanan(Integer idPesanan) {
         this.idPesanan = idPesanan;
     }
 
-    public String getFidMenuPizza() {
-        return fidMenuPizza;
-    }
-
-    public void setFidMenuPizza(String fidMenuPizza) {
-        this.fidMenuPizza = fidMenuPizza;
+    public static String getClm_fidMenu() {
+        return clm_fidMenu;
     }
 
     public String getQty() {
@@ -103,5 +103,13 @@ public class MyCart implements Serializable {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
