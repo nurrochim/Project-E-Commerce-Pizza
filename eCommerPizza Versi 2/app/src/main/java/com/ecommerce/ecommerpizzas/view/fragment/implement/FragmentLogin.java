@@ -25,7 +25,14 @@ public class FragmentLogin extends BaseFragment {
         ButterKnife.bind(this, view);
     }
 
-    @OnClick({R.id.btn_order_as_guest, R.id.btn_register})
+    @OnClick({R.id.btn_order_as_guest})
+    public void openAddGuest(){
+        FragmentAddUser fragmentAddUser = new FragmentAddUser();
+        fragmentAddUser.isGuest = true;
+        openFragment(fragmentAddUser, "", false);
+    }
+
+    @OnClick({R.id.btn_register})
     public void openAddUser(){
         openFragment(new FragmentAddUser(), "", false);
     }

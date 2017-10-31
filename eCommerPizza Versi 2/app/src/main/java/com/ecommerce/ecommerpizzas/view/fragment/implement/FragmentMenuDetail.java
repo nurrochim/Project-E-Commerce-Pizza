@@ -104,8 +104,21 @@ public class FragmentMenuDetail extends BaseFragment{
     public void addToCart(){
         try {
             openDatabaseHelper();
-            MyCart myCart = new MyCart(model.getId(), model.getMenuName(), model.getMenuDetail(), model.getMenuHarga(), model.getMenuSize(), "1", model.getImage1());
-            myCartsDao.create(myCart);
+            List<MyCart> myCarts = myCartsDao.queryForEq(MyCart.clm_fidMenu, model.getId());
+            for(MyCart cart : myCarts){
+                if(cart.getFidMenuPizza()==model.getId()){
+                    Integer qty = Integer.valueOf(cart.getQty())+1;
+                    cart.setQty(qty.toString());
+                    Integer harga = Integer.valueOf(model.getMenuHarga());
+                    cart.setHarga(String.valueOf(harga*qty));
+                    myCartsDao.update(cart);
+                }
+            }
+
+            if(myCarts.isEmpty()){
+                MyCart myCart = new MyCart(model.getId(), model.getMenuName(), model.getMenuDetail(), model.getMenuHarga(), model.getMenuSize(), "1", model.getImage1());
+                myCartsDao.create(myCart);
+            }
 
             // open fragment MyCart
             openFragment(new FragmentMyCart(), "", false);

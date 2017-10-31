@@ -27,3 +27,18 @@ Route::post('/v1/employees/{id}', 'Employees@update');
 Route::delete('/v1/employees/{id}', 'Employees@destroy');
 
 Route::get('/v1/menu/{id?}', 'MenuPizzas@index');
+Route::get('/v1/menuweb/{id?}', 'MenuPizzas@indexmenuweb');
+
+Route::get('/v1/order_header/{id?}', 'OrderHeaderController@index');
+Route::post('/v1/order_header', 'OrderHeaderController@store');
+Route::post('/v1/order_header/{id}', 'OrderHeaderController@update');
+Route::post('/v1/order_header/{id}/{status}/{statusdesc}', 'OrderHeaderController@updateStatus');
+Route::delete('/v1/order_header/{id}', 'OrderHeaderController@destroy');
+
+Route::get('/v2/order_detail/{id?}', 'OrderDetailController@index');
+Route::get('/v1/order_detail/{id?}', 'OrderDetailController@showOrder');
+Route::post('/v1/order_detail', 'OrderDetailController@store');
+Route::post('/v1/order_detail/{id}', 'OrderDetailController@update');
+Route::delete('/v1/order_detail/{id}', 'OrderDetailController@destroy');
+
+Route::post('v1/sendMessage/{id}/{statusOrder}/{msgBody}/{msgTitle}/{to}', 'SendMessageToFirebase@sendMessageWithParam');

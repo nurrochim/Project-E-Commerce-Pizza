@@ -27,9 +27,22 @@
             android:id="@+id/layout_image_menu">
             <ImageView
                 android:id="@+id/image_cart_menu"
-                android:layout_width="120px"
-                android:layout_height="100px"
+                android:layout_width="17mm"
+                android:layout_height="15mm"
                 app:srcCompat="@drawable/beef_rendang"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:id="@+id/layout_image_remove">
+            <ImageView
+                android:id="@+id/image_cart_remove"
+                android:layout_width="5mm"
+                android:layout_height="5mm"
+                app:srcCompat="@drawable/remove"
                 />
         </LinearLayout>
 
@@ -39,8 +52,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_toEndOf="@+id/layout_image_menu"
-            android:layout_marginLeft="5px"
-            android:layout_marginBottom="10px">
+            android:layout_marginLeft="0.5mm"
+            android:layout_marginBottom="1mm"
+            android:paddingTop="1mm">
             <TextView
                 android:id="@+id/text_pizza_name"
                 android:layout_width="wrap_content"

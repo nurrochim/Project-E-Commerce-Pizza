@@ -1,8 +1,13 @@
 package com.ecommerce.ecommerpizzas.utils;
 
 
-import com.ecommerce.ecommerpizzas.models.menu.MenuRespon;
+import android.util.Log;
 
+import com.ecommerce.ecommerpizzas.models.menu.MenuRespon;
+import com.ecommerce.ecommerpizzas.models.post.PostEmployee;
+
+import retrofit2.*;
+import retrofit2.Response;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -51,6 +56,63 @@ public class Service {
 
     public interface GetMenuListCallback{
         void onSuccess(MenuRespon menuRespon);
+
+        void onError(NetworkError networkError);
+    }
+
+    public Call<String> postUser(String name, String email, String contact_number, String position){
+        final boolean[] status = {false};
+        return networkService.savePost(name, email, contact_number, position);
+    }
+
+    public Call<String> postHeader(String idOrder,
+                                   String name,
+                                   String email,
+                                   String contactNumber,
+                                   String address,
+                                   String statusOrder,
+                                   String statusOrderDesc,
+                                   String delveryFee,
+                                   String subTotal,
+                                   String total,
+                                   String token, String paymentMethod){
+        final boolean[] status = {false};
+        return networkService.postHeader(Integer.valueOf(idOrder),
+                name,
+                email,
+                contactNumber,
+                address,
+                statusOrder,
+                statusOrderDesc,
+                delveryFee,
+                subTotal,
+                total,
+                token, paymentMethod);
+    }
+
+    public Call<String> postDetailOrder(String idOrder,
+                                        String menuName,
+                                        String detail,
+                                        String harga,
+                                        String size,
+                                        String imageH,
+                                        String imageD,
+                                        String qty,
+                                        String subTotal){
+        final boolean[] status = {false};
+        return networkService.postDetailOrder(Integer.valueOf(idOrder),
+                menuName,
+                detail,
+                harga,
+                size,
+                imageH,
+                imageD,
+                qty,
+                subTotal);
+    }
+
+    public interface GetPsotUserCallback{
+        void onSuccess(String respon);
 
         void onError(NetworkError networkError);
     }

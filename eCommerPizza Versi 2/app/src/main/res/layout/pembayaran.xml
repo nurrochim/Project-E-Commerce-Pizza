@@ -6,21 +6,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Order Payment"
+            android:textSize="20sp"
+            android:textColor="@color/blacks"
+            android:gravity="center"
+            android:layout_marginBottom="10px"/>
+
+        <View style="@style/Divider"
+            android:layout_marginTop="5px"
+            android:layout_marginBottom="5px"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
         <LinearLayout
+            android:id="@+id/layout_cash"
             android:layout_width="wrap_content"
-            android:layout_height="200px"
+            android:layout_height="20mm"
             android:orientation="vertical"
             android:gravity="center"
             android:background="@drawable/shape_radius_layout">
         <ImageButton
-            android:layout_width="100px"
-            android:layout_height="100px"
-            android:layout_margin="10px"
+            android:id="@+id/btn_cash"
+            android:layout_width="10mm"
+            android:layout_height="10mm"
+            android:layout_margin="1mm"
             android:background="@drawable/cash"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -29,16 +45,18 @@
                 android:textSize="10sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/layout_credit"
             android:layout_width="wrap_content"
-            android:layout_height="200px"
+            android:layout_height="20mm"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="10px"
+            android:layout_margin="1mm"
             android:background="@drawable/shape_radius_layout">
             <ImageButton
-                android:layout_width="100px"
-                android:layout_height="100px"
-                android:layout_margin="10px"
+                android:id="@+id/btn_credit"
+                android:layout_width="10mm"
+                android:layout_height="10mm"
+                android:layout_margin="1mm"
                 android:background="@drawable/credit_card"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -48,15 +66,17 @@
                 android:text="CREDIT\nCARD (*)"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/layout_debet"
             android:layout_width="wrap_content"
-            android:layout_height="200px"
+            android:layout_height="20mm"
             android:orientation="vertical"
             android:gravity="center"
             android:background="@drawable/shape_radius_layout">
             <ImageButton
-                android:layout_width="100px"
-                android:layout_height="100px"
-                android:layout_margin="10px"
+                android:id="@+id/btn_debet"
+                android:layout_width="10mm"
+                android:layout_height="10mm"
+                android:layout_margin="1mm"
                 android:background="@drawable/debit_card"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -92,6 +112,7 @@
         android:layout_marginTop="5px"
         android:layout_marginBottom="5px"/>
     <TextView
+        android:id="@+id/text_order_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5px"
@@ -112,6 +133,7 @@
                 android:layout_marginRight="5px"
                 android:text="Service Method"/>
             <TextView
+                android:id="@+id/text_service_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5px"
@@ -127,9 +149,10 @@
                 android:layout_marginLeft="5px"
                 android:layout_marginRight="5px"
                 android:text="Delivery Address"
-                android:id="@+id/textView" />
+                 />
 
             <TextView
+                android:id="@+id/textAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5px"
@@ -147,6 +170,7 @@
                 android:layout_marginRight="5px"
                 android:text="Order Name"/>
             <TextView
+                android:id="@+id/text_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5px"
@@ -161,6 +185,7 @@
                 android:layout_marginRight="5px"
                 android:text="Contact"/>
             <TextView
+                android:id="@+id/textContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5px"
@@ -175,6 +200,7 @@
                 android:layout_marginRight="5px"
                 android:text="Email"/>
             <TextView
+                android:id="@+id/text_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5px"
@@ -184,7 +210,7 @@
     </TableLayout>
     <Space
         android:layout_width="match_parent"
-        android:layout_height="20px" />
+        android:layout_height="2mm" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -200,8 +226,9 @@
         android:id="@+id/checkBox" />
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10px" />
+        android:layout_height="1mm" />
     <Button
+        android:id="@+id/submit_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5px"

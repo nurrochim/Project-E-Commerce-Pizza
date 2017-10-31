@@ -1,0 +1,38 @@
+{
+    "header": {
+        "id_order":"1213",
+        "name":"Nurochim Json",
+        "email":"nurochim@ymail.com",
+        "contactNumber":"08862832",
+        "address":"Setiabudi Jakarta",
+        "status_order":"1",
+        "status_order_desc":"Waiting Respon",
+        "delivery_fee":"12 08 2017 22:01",
+        "sub_total":"100,000,00",
+        "total":"100,000,00",
+        "token":"drvpEwnEktU:APA91bFTkaroCiqf48wPOEPG2NrxJk68nL2cXnyxPJ36g64QGDsWumwaK7aO9794T5B5PtbzClJXGE92L-MR7ArYIYsx-Gr1-3xPMN3edHi8MdSUJwu6EBFgEpn0Bnz_tMZznohLFzPB"
+    },
+    "detail":
+        [{
+            "fid_order":"1213",
+            "name_menu":"Beef Rendang Json",
+            "detail":"Coba Bos",
+            "harga":"20,000",
+            "size":"",
+            "image_path_h":"",
+            "image_path_d":"",
+            "qty":"",
+            "sub_total":""
+        },{
+            "fid_order":"",
+            "name_menu":"",
+            "detail":"",
+            "harga":"",
+            "size":"",
+            "image_path_h":"",
+            "image_path_d":"",
+            "qty":"",
+            "sub_total":""
+        }]
+    
+}

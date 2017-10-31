@@ -1,0 +1,119 @@
+package com.ecommerce.ecommerpizzas.view.fragment.implement;
+
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import com.ecommerce.ecommerpizzas.R;
+import com.ecommerce.ecommerpizzas.models.entity.MyCart;
+import com.ecommerce.ecommerpizzas.view.fragment.BaseFragment;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+/**
+ * Created by Asus on 03/06/2017.
+ */
+
+public class FragmentFinishOrder extends BaseFragment {
+    @BindView(R.id.tableLayoutSum)
+    TableLayout tableSum;
+    @BindView(R.id.divider_layout)
+    LinearLayout dividerLayout;
+    @BindView(R.id.text_sum)
+    TextView textSum;
+    @BindView(R.id.text_fee)
+    TextView textFee;
+    @BindView(R.id.text_total)
+    TextView textTotal;
+
+    @Override
+    public void initView() {
+        view = inflater.inflate(R.layout.order_finish, container, false);
+        ButterKnife.bind(this, view);
+        loadData();
+    }
+
+    public void loadData(){
+        try {
+            openDatabaseHelper();
+            List<MyCart> myCartList = myCartsDao.queryForAll();
+
+            // remove exist row
+            int size = tableSum.getChildCount();
+            for (int i = 2; i < size; i++) {
+                View child = tableSum.getChildAt(i);
+                if (child instanceof TableRow) ((ViewGroup) child).removeAllViews();
+            }
+
+            // write row
+            for (int i = 0; i < myCartList.size(); i++) {
+                MyCart myCart = myCartList.get(i);
+                TableRow tr = new TableRow(view.getContext());
+                tr.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+
+                TextView textName = new TextView(view.getContext());
+                textName.setText(myCart.getMenuName());
+                textName.setPadding(5, 0, 5, 0);
+                tr.addView(textName);
+
+                TextView textQTY = new TextView(view.getContext());
+                textQTY.setText(myCart.getQty());
+                textQTY.setPadding(5, 0, 5, 0);
+                textQTY.setGravity(Gravity.CENTER);
+                textQTY.setBackgroundResource(R.drawable.shape_radius_layout);
+                tr.addView(textQTY);
+
+                TextView textPrice = new TextView(view.getContext());
+                Double price = Double.parseDouble(myCart.getHarga());
+                textPrice.setText(String.format("%,.2f",price));
+                textPrice.setPadding(5, 0, 5, 0);
+                textPrice.setGravity(Gravity.RIGHT);
+                tr.addView(textPrice);
+
+
+
+
+                int[] attrs = { android.R.attr.listDivider };
+                TypedArray ta = getContext().obtainStyledAttributes(attrs);
+                //Get Drawable and use as needed
+                Drawable divider = ta.getDrawable(0);
+                LinearLayout ly  = new LinearLayout(getContext());
+                ly.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+                ly.setBackground(divider);
+
+                tr.setPadding(0,3,0,3);
+                tableSum.addView(tr);
+                tableSum.addView(ly);
+            }
+
+            // calculate total
+            if(myCartList.size()>0) {
+                double sumPrice = 0;
+                for (MyCart myCart : myCartList) {
+                    sumPrice += Double.parseDouble(myCart.getHarga());
+                }
+                textSum.setText(String.format("%,.2f", sumPrice));
+                textTotal.setText(String.format("%,.2f", (sumPrice + 15000)));
+            }else{
+                textSum.setText("");
+                textFee.setText("");
+                textTotal.setText("");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            dbh.close();
+        }
+    }
+}

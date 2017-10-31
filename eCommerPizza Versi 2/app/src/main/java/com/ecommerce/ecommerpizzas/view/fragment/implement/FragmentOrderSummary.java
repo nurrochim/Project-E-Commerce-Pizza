@@ -34,6 +34,12 @@ public class FragmentOrderSummary extends BaseFragment {
     TableLayout tableSum;
     @BindView(R.id.divider_layout)
     LinearLayout dividerLayout;
+    @BindView(R.id.text_sum)
+    TextView textSum;
+    @BindView(R.id.text_fee)
+    TextView textFee;
+    @BindView(R.id.text_total)
+    TextView textTotal;
 
     @Override
     public void initView() {
@@ -73,10 +79,12 @@ public class FragmentOrderSummary extends BaseFragment {
                 tr.addView(textQTY);
 
                 TextView textPrice = new TextView(view.getContext());
-                textPrice.setText(myCart.getHarga());
+                Double price = Double.parseDouble(myCart.getHarga());
+                textPrice.setText(String.format("%,.2f",price));
                 textPrice.setPadding(5, 0, 5, 0);
                 textPrice.setGravity(Gravity.RIGHT);
                 tr.addView(textPrice);
+
 
 
 
@@ -91,6 +99,20 @@ public class FragmentOrderSummary extends BaseFragment {
                 tr.setPadding(0,3,0,3);
                 tableSum.addView(tr);
                 tableSum.addView(ly);
+            }
+
+            // calculate total
+            if(myCartList.size()>0) {
+                double sumPrice = 0;
+                for (MyCart myCart : myCartList) {
+                    sumPrice += Double.parseDouble(myCart.getHarga());
+                }
+                textSum.setText(String.format("%,.2f", sumPrice));
+                textTotal.setText(String.format("%,.2f", (sumPrice + 15000)));
+            }else{
+                textSum.setText("");
+                textFee.setText("");
+                textTotal.setText("");
             }
         } catch (SQLException e) {
             e.printStackTrace();

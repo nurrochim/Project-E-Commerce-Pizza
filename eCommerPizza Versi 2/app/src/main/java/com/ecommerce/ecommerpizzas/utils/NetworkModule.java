@@ -1,6 +1,8 @@
 package com.ecommerce.ecommerpizzas.utils;
 
 import com.ecommerce.ecommerpizzas.BuildConfig;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,11 +62,14 @@ public class NetworkModule {
 
                 .build();
 
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
 
         return new Retrofit.Builder()
                 .baseUrl(URLs.getMainURL())
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
 

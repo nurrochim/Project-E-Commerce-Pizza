@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Finish Payment"
+        android:textSize="20sp"
+        android:textColor="@color/blacks"
+        android:gravity="center"
+        android:layout_marginBottom="10px"/>
+
+    <TableLayout
+        android:id="@+id/tableLayoutSum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="0"
+        android:stretchColumns="0">
+        <View style="@style/Divider"
+            android:layout_marginTop="5px"
+            android:layout_marginBottom="5px"/>
+        <TableRow>
+            <TextView
+                android:text="ITEMS"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"
+                android:gravity="center"/>
+            <TextView
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:text="QTY"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"/>
+            <TextView
+                android:text="PRICE (RP.)"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"/>
+        </TableRow>
+        <LinearLayout style="@style/Divider"
+            android:id="@+id/divider_layout"
+            android:layout_marginTop="5px"
+            android:layout_marginBottom="5px"
+            android:orientation="vertical"
+            />
+        <TableRow>
+            <TextView
+                android:text="BEEF RENDANG"/>
+            <TextView
+                android:gravity="center"
+                android:text="2"
+                android:background="@drawable/shape_radius_layout"/>
+            <TextView
+                android:gravity="right"
+                android:text="210,000.00"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="SPICY GARLIC PRAWN "/>
+            <TextView
+                android:gravity="center"
+                android:text="2"
+                android:background="@drawable/shape_radius_layout"/>
+            <TextView
+                android:gravity="right"
+                android:text="210,000.00"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="BEEF PEPPERONI FEAST"/>
+            <TextView
+                android:gravity="center"
+                android:text="2"
+                android:background="@drawable/shape_radius_layout"/>
+            <TextView
+                android:gravity="right"
+                android:text="144,000.00"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="0">
+        <TableRow android:gravity="right"
+            android:background="@color/material_grey_300">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView android:text="Sub Total"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"/>
+            <TextView
+                android:id="@+id/text_sum"
+                android:text="Rp. 364,000.00"
+                android:textSize="15sp"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"
+                android:paddingRight="10dp"/>
+        </TableRow>
+        <TableRow android:gravity="right"
+            android:background="@color/material_grey_300">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView android:text="Delivery Fee"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"/>
+            <TextView
+                android:id="@+id/text_fee"
+                android:text="15,000.00"
+                android:textSize="15sp"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"
+                android:paddingRight="10dp"/>
+        </TableRow>
+        <TableRow android:gravity="right"
+            android:background="@color/md_light_blue_A400">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView android:text="Total"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"/>
+            <TextView
+                android:id="@+id/text_total"
+                android:text="Rp. 379,000.00"
+                android:textSize="15sp"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:textColor="@color/blacks"
+                android:paddingRight="10dp"/>
+        </TableRow>
+    </TableLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25px"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Terimakasih, pesanan anda telah selesai"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/blacks"
+        android:paddingRight="10dp"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Silahkan berbelanja kembali"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/blacks"
+        android:paddingRight="10dp"/>
+    </LinearLayout>
+</ScrollView>

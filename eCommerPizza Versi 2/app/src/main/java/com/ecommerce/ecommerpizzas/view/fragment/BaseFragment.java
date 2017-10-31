@@ -19,6 +19,7 @@ import com.ecommerce.ecommerpizzas.R;
 import com.ecommerce.ecommerpizzas.models.entity.MyCart;
 import com.ecommerce.ecommerpizzas.utils.DatabaseHelper;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.field.types.IntegerObjectType;
 
 import java.sql.SQLException;
 
@@ -98,6 +99,9 @@ public class BaseFragment extends Fragment {
         if(value instanceof String){
             editorSharedPreference.putString(key, value.toString());
         }
+        if(value instanceof Integer){
+            editorSharedPreference.putInt(key, (Integer) value);
+        }
 
         editorSharedPreference.commit();
     }
@@ -105,6 +109,11 @@ public class BaseFragment extends Fragment {
     public Object getValueSharedPreference(String key){
         Object object = new Object();
         object = sharedPreference.getString(key,"");
+        return object;
+    }
+    public Object getValueSharedPreferenceInt(String key){
+        Object object = new Object();
+        object = sharedPreference.getInt(key,1);
         return object;
     }
 }

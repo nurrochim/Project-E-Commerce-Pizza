@@ -112,4 +112,12 @@ public class MyCart implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public Integer getFidMenuPizza() {
+        return fidMenuPizza;
+    }
+
+    public void setFidMenuPizza(Integer fidMenuPizza) {
+        this.fidMenuPizza = fidMenuPizza;
+    }
 }

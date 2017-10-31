@@ -35,4 +35,16 @@ class MenuPizzas extends Controller
         $menuJson = $manager ->createData($menuPizzaTransform)->toArray();
         return \Response::json($menuJson, 200) ;
     }
+    
+    public function indexmenuweb($id = null) {
+        if ($id == null) {
+            return MenuPizza::orderBy('ID_MENU', 'asc')->get();
+        } else {
+            return $this->showMenuById($id);
+        }
+    }
+    
+    public function showMenuById($id) {
+        return MenuPizza::find($id);
+    }
 }

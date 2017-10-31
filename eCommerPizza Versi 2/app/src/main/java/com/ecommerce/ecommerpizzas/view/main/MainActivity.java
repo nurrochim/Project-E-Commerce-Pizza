@@ -1,7 +1,9 @@
 package com.ecommerce.ecommerpizzas.view.main;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,14 +15,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ecommerce.ecommerpizzas.R;
+import com.ecommerce.ecommerpizzas.view.fragment.fragmentTab.FragmentConfirmation;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentAddUser;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentLogin;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentMenuImp;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentMyCart;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentOrderSummary;
 import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentPembayaran;
+import com.ecommerce.ecommerpizzas.view.fragment.implement.FragmentStatusOrder;
+import com.j256.ormlite.stmt.query.In;
+
+import android.app.NotificationManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,8 +64,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_main, new FragmentLogin()).commit();
+        Bundle bundle = getIntent().getExtras();
+        Integer statusOrder = 0;
+        boolean openStatusOrderFragment = false;
+        if (bundle != null) {
+            if(bundle.getString("status_order") != null && !bundle.getString("status_order").isEmpty()){
+                statusOrder = Integer.parseInt(bundle.getString("status_order"));
+                openStatusOrderFragment = true;
+                Log.i("Status Order", statusOrder.toString());
+            }
+// else{
+//                Long statusOrderLong = bundle.getLong("status_order");
+//                statusOrder = Integer.parseInt(statusOrderLong.toString());
+//                openStatusOrderFragment = true;
+//                Log.i("Status Order Background", statusOrder.toString());
+//            }
+
+//            CharSequence textToast = values;
+//            Toast toast = Toast.makeText(this,textToast, Toast.LENGTH_SHORT);
+//            TextView textView = (TextView) toast.getView().findViewById(android.R.id.message);
+//            if( textView != null) textView.setGravity(Gravity.CENTER);
+//            toast.show();
+        }
+
+        if(openStatusOrderFragment){
+            fragmentManager = getSupportFragmentManager();
+            FragmentStatusOrder fragmentStatusOrder = new FragmentStatusOrder();
+            fragmentStatusOrder.setStatusOrder(statusOrder);
+            fragmentManager.beginTransaction().replace(R.id.content_main, fragmentStatusOrder).commit();
+        }else{
+            fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_main, new FragmentLogin()).commit();
+        }
     }
 
     @Override
@@ -106,12 +144,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if(id == R.id.nav_my_cart){
             fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentMyCart()).commit();
             textTitle.setText("My Cart");
-        } else if(id == R.id.nav_confirmation){
-            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentPembayaran()).commit();
-            textTitle.setText("Pembayaran");
-        }else if(id == R.id.nav_summary){
-            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentOrderSummary()).commit();
+        }
+//        else if(id == R.id.nav_confirmation){
+//            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentPembayaran()).commit();
+//            textTitle.setText("Pembayaran");
+//        }
+        else if(id == R.id.nav_summary){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentConfirmation()).commit();
             textTitle.setText("Order Summary");
+        }else if(id == R.id.nav_order_status){
+            fragmentManager.beginTransaction().replace(R.id.content_main,new FragmentStatusOrder()).commit();
+            textTitle.setText("Status Order");
         }
 
 

@@ -21,3 +21,6 @@ Route::get('/sendMessage', 'SendMessageToFirebase@sendMessage');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/orderlist', function(){return view('orderList');});
+Route::get('/menulist', function(){return view('menuList');});

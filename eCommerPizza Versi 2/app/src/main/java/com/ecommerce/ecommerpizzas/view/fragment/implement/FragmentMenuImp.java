@@ -84,7 +84,7 @@ public class FragmentMenuImp extends BaseFragment implements MenuFragment {
 
     @Override
     public void onFailure(String appErrorMessage) {
-        createToast("Sory... Somethng Wrong... \n Try again later");
+        createToast("Sory... Something Wrong... \n Try again later");
         //Log.e("Network Error ", appErrorMessage);
     }
 
